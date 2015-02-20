@@ -38,10 +38,11 @@ def prep_tweet():
     return get_tweet_text(review_snippet)
 
 def main():
+    twitter = auth()
     tweet = ""
     while len(tweet) < 1:
         tweet = prep_tweet()
-    #twitter.update_status(status=tweet)
-    print tweet
+    twitter.update_status(status=tweet)
+    #print tweet
 
 main()
