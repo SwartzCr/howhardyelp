@@ -1,5 +1,5 @@
 import json
-import Twython
+from twython import Twython
 import yelp_search
 import requests
 from numpy import random
