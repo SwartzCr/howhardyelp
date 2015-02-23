@@ -55,7 +55,6 @@ def main():
     tweet = ""
     while len(tweet) < 1:
         tweet = prep_tweet()
-   # twitter.update_status(status=tweet)
-    print tweet
+    twitter.update_status(status=tweet)
 
 main()
