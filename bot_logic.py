@@ -3,6 +3,7 @@ from twython import Twython
 import yelp_search
 import requests
 from numpy import random
+import yahoo
 
 def auth():
     with open("access.json", 'r') as f:
@@ -27,10 +28,10 @@ def get_tweet_text(review_snippet):
             segment = item
             break
     punc = [i for (i, x) in enumerate(segment) if x in ["!", ".", "?", "\n"]]
-    for place in punc[::-1]:
+    for place in punc[:]:
         if place <= 139:
             return review_snippet[:place+1]
-    return review_snippet[:140]
+    return ""
 
 def prep_tweet():
 # get city state
@@ -48,7 +49,13 @@ def prep_tweet():
         review_snippet = yelp_search.get_review_snippet(biz_resp)
     except:
         return ""
-    return get_tweet_text(review_snippet)
+    tweet_text = get_tweet_text(review_snippet)
+    if tweet_text != "":
+        try:
+            url = yahoo.post(tweet_text)
+        except:
+            return ""
+    return tweet_text + " " + url
 
 def main():
     twitter = auth()
