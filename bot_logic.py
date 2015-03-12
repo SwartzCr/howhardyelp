@@ -53,6 +53,8 @@ def prep_tweet():
     if tweet_text != "":
         try:
             url = yahoo.post(tweet_text)
+            if url == "https://answers.yahoo.com/":
+                url = ""
         except:
             return ""
     return tweet_text + " " + url
@@ -64,4 +66,5 @@ def main():
         tweet = prep_tweet()
     twitter.update_status(status=tweet)
 
-main()
+if __name__ == "__main__":
+    main()
