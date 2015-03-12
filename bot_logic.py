@@ -53,7 +53,7 @@ def prep_tweet():
     if tweet_text != "":
         try:
             url = yahoo.post(tweet_text)
-            if url == "https://answers.yahoo.com/":
+            if "index" not in url:
                 url = ""
         except:
             return ""
