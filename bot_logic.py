@@ -50,14 +50,14 @@ def prep_tweet():
     except:
         return ""
     tweet_text = get_tweet_text(review_snippet)
-    if tweet_text != "":
-        try:
-            url = yahoo.post(tweet_text)
-            if "index" not in url:
-                url = ""
-        except:
-            return ""
-    return tweet_text + " " + url
+    #if tweet_text != "":
+    #    try:
+    #        url = yahoo.post(tweet_text)
+    #        if "index" not in url:
+    #            url = ""
+    #    except:
+    #        return ""
+    return tweet_text
 
 def main():
     twitter = auth()
