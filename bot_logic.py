@@ -29,7 +29,7 @@ def get_tweet_text(review_snippet):
             break
     punc = [i for (i, x) in enumerate(segment) if x in ["!", ".", "?", "\n"]]
     for place in punc[:]:
-        if place <= 139:
+        if place <= 279:
             return review_snippet[:place+1]
     return ""
 
